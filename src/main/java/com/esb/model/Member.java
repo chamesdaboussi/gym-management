@@ -1,9 +1,14 @@
 package com.esb.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -27,6 +32,10 @@ public class Member {
 
 	@Pattern(regexp = "[0-9]{8}", message = "Phone must have 8 digits")
 	private String phone;
+
+	@OneToMany(mappedBy = "member")
+	@JsonIgnore
+	private List<Booking> bookings;
 
 	// Getters and Setters
 	public Long getId() {
@@ -67,5 +76,13 @@ public class Member {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
 	}
 }
