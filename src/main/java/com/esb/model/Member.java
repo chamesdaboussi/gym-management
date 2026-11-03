@@ -13,9 +13,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import java.util.List;
-
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class Member {
