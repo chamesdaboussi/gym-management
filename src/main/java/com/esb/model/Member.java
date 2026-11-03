@@ -13,6 +13,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import java.util.List;
+
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Member {
@@ -32,6 +35,10 @@ public class Member {
 
 	@Pattern(regexp = "[0-9]{8}", message = "Phone must have 8 digits")
 	private String phone;
+
+	@OneToMany(mappedBy = "member")
+	@JsonIgnore
+	private List<Subscription> subscriptions;
 
 	@OneToMany(mappedBy = "member")
 	@JsonIgnore
@@ -84,5 +91,13 @@ public class Member {
 
 	public void setBookings(List<Booking> bookings) {
 		this.bookings = bookings;
+
+	}
+	public List<Subscription> getSubscriptions() {
+		return subscriptions;
+	}
+
+	public void setSubscriptions(List<Subscription> subscriptions) {
+		this.subscriptions = subscriptions;
 	}
 }

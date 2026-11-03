@@ -9,6 +9,9 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Plan {
@@ -25,6 +28,9 @@ public class Plan {
 
 	@Positive(message = "Duration must be positive")
 	private int durationInDays;
+	@OneToMany(mappedBy = "plan")
+	@JsonIgnore
+	private List<Subscription> subscriptions;
 
 	// Getters and Setters
 	public Long getId() {
@@ -57,5 +63,12 @@ public class Plan {
 
 	public void setDurationInDays(int durationInDays) {
 		this.durationInDays = durationInDays;
+	}
+	public List<Subscription> getSubscriptions() {
+		return subscriptions;
+	}
+
+	public void setSubscriptions(List<Subscription> subscriptions) {
+		this.subscriptions = subscriptions;
 	}
 }
