@@ -1,0 +1,478 @@
+{
+	"info": {
+		"name": "Gym Management API",
+		"description": "Tests for the Gym Management Spring Boot project. Run the folders in order (Members, Coaches, Plans, Sessions, Subscriptions, Bookings).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Members",
+			"item": [
+				{
+					"name": "Add member",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"Chames Daboussi\",\n    \"age\": 22,\n    \"email\": \"chames@mail.com\",\n    \"phone\": \"22123456\"\n}"
+						},
+						"url": "http://localhost:8081/api/members"
+					}
+				},
+				{
+					"name": "Add second member",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"Sami Trabelsi\",\n    \"age\": 25,\n    \"email\": \"sami@mail.com\",\n    \"phone\": \"55987654\"\n}"
+						},
+						"url": "http://localhost:8081/api/members"
+					}
+				},
+				{
+					"name": "Get all members",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/members"
+					}
+				},
+				{
+					"name": "Get member by id",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/members/1"
+					}
+				},
+				{
+					"name": "Update member",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"Chames Daboussi\",\n    \"age\": 23,\n    \"email\": \"chames.daboussi@mail.com\",\n    \"phone\": \"22123456\"\n}"
+						},
+						"url": "http://localhost:8081/api/members/1"
+					}
+				},
+				{
+					"name": "ERROR - Member not found",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/members/99"
+					}
+				},
+				{
+					"name": "ERROR - Invalid member (validation)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"\",\n    \"age\": 10,\n    \"email\": \"not-an-email\",\n    \"phone\": \"123\"\n}"
+						},
+						"url": "http://localhost:8081/api/members"
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Coaches",
+			"item": [
+				{
+					"name": "Add coach",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"Ali Ben Salah\",\n    \"phone\": \"98111222\",\n    \"specialty\": \"YOGA\"\n}"
+						},
+						"url": "http://localhost:8081/api/coaches"
+					}
+				},
+				{
+					"name": "Get all coaches",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/coaches"
+					}
+				},
+				{
+					"name": "Get coach by id",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/coaches/1"
+					}
+				},
+				{
+					"name": "Get coaches by specialty",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/coaches/specialty/YOGA"
+					}
+				},
+				{
+					"name": "Update coach",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"Ali Ben Salah\",\n    \"phone\": \"98111333\",\n    \"specialty\": \"FITNESS\"\n}"
+						},
+						"url": "http://localhost:8081/api/coaches/1"
+					}
+				},
+				{
+					"name": "ERROR - Invalid coach (validation)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"\",\n    \"phone\": \"98111222\"\n}"
+						},
+						"url": "http://localhost:8081/api/coaches"
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Plans",
+			"item": [
+				{
+					"name": "Add plan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Monthly\",\n    \"price\": 80,\n    \"durationInDays\": 30\n}"
+						},
+						"url": "http://localhost:8081/api/plans"
+					}
+				},
+				{
+					"name": "Get all plans",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/plans"
+					}
+				},
+				{
+					"name": "Get plan by id",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/plans/1"
+					}
+				},
+				{
+					"name": "Update plan",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Monthly\",\n    \"price\": 90,\n    \"durationInDays\": 30\n}"
+						},
+						"url": "http://localhost:8081/api/plans/1"
+					}
+				},
+				{
+					"name": "ERROR - Invalid plan (validation)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Free\",\n    \"price\": -5,\n    \"durationInDays\": 0\n}"
+						},
+						"url": "http://localhost:8081/api/plans"
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Sessions",
+			"item": [
+				{
+					"name": "Add session for coach 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Morning Yoga\",\n    \"date\": \"2027-01-15T09:00:00\",\n    \"capacity\": 1\n}"
+						},
+						"url": "http://localhost:8081/api/sessions/coach/1"
+					}
+				},
+				{
+					"name": "Get all sessions",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/sessions"
+					}
+				},
+				{
+					"name": "Get session by id",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/sessions/1"
+					}
+				},
+				{
+					"name": "Get sessions of coach",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/sessions/coach/1"
+					}
+				},
+				{
+					"name": "Update session",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Morning Yoga\",\n    \"date\": \"2027-01-15T10:00:00\",\n    \"capacity\": 1\n}"
+						},
+						"url": "http://localhost:8081/api/sessions/1"
+					}
+				},
+				{
+					"name": "ERROR - Coach not found",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Boxing\",\n    \"date\": \"2027-01-20T18:00:00\",\n    \"capacity\": 10\n}"
+						},
+						"url": "http://localhost:8081/api/sessions/coach/99"
+					}
+				},
+				{
+					"name": "ERROR - Session in the past (validation)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Old session\",\n    \"date\": \"2020-01-01T09:00:00\",\n    \"capacity\": 10\n}"
+						},
+						"url": "http://localhost:8081/api/sessions/coach/1"
+					}
+				}
+			]
+		},
+		{
+			"name": "5. Subscriptions",
+			"item": [
+				{
+					"name": "Subscribe member 1 to plan 1",
+					"request": {
+						"method": "POST",
+						"url": "http://localhost:8081/api/subscriptions/1/1"
+					}
+				},
+				{
+					"name": "Get all subscriptions",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/subscriptions"
+					}
+				},
+				{
+					"name": "Get subscription by id",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/subscriptions/1"
+					}
+				},
+				{
+					"name": "Get expired subscriptions",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/subscriptions/expired"
+					}
+				},
+				{
+					"name": "ERROR - Plan not found",
+					"request": {
+						"method": "POST",
+						"url": "http://localhost:8081/api/subscriptions/1/99"
+					}
+				}
+			]
+		},
+		{
+			"name": "6. Bookings",
+			"item": [
+				{
+					"name": "Book session 1 for member 1",
+					"request": {
+						"method": "POST",
+						"url": "http://localhost:8081/api/bookings/1/1"
+					}
+				},
+				{
+					"name": "Get all bookings",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/bookings"
+					}
+				},
+				{
+					"name": "Get booking by id",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/bookings/1"
+					}
+				},
+				{
+					"name": "Get sessions of member",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8081/api/bookings/member/1/sessions"
+					}
+				},
+				{
+					"name": "ERROR - Already booked",
+					"request": {
+						"method": "POST",
+						"url": "http://localhost:8081/api/bookings/1/1"
+					}
+				},
+				{
+					"name": "ERROR - Session is full",
+					"request": {
+						"method": "POST",
+						"url": "http://localhost:8081/api/bookings/2/1"
+					}
+				}
+			]
+		},
+		{
+			"name": "7. Delete",
+			"item": [
+				{
+					"name": "Delete booking",
+					"request": {
+						"method": "DELETE",
+						"url": "http://localhost:8081/api/bookings/1"
+					}
+				},
+				{
+					"name": "Delete subscription",
+					"request": {
+						"method": "DELETE",
+						"url": "http://localhost:8081/api/subscriptions/1"
+					}
+				},
+				{
+					"name": "Delete session",
+					"request": {
+						"method": "DELETE",
+						"url": "http://localhost:8081/api/sessions/1"
+					}
+				},
+				{
+					"name": "Delete plan",
+					"request": {
+						"method": "DELETE",
+						"url": "http://localhost:8081/api/plans/1"
+					}
+				},
+				{
+					"name": "Delete coach",
+					"request": {
+						"method": "DELETE",
+						"url": "http://localhost:8081/api/coaches/1"
+					}
+				},
+				{
+					"name": "Delete member",
+					"request": {
+						"method": "DELETE",
+						"url": "http://localhost:8081/api/members/2"
+					}
+				}
+			]
+		}
+	]
+}
