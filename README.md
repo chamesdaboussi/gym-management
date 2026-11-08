@@ -10,7 +10,7 @@ It is a REST API to manage a gym: members, coaches, plans, sessions, subscriptio
 |---|---|
 | Chames Daboussi | Project setup, Coach, Session |
 | Chiraz Belguith | Member |
-| Rabeb | Plan |
+| Ameur Rabeb| Plan |
 | Arij Belhaj | Subscription |
 | Rahma Ben Ameur | Booking |
 
